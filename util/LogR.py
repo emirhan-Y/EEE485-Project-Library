@@ -1,2 +1,2 @@
 def log_r():
-    return 1
+    return 2

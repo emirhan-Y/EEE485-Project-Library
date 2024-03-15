@@ -6,6 +6,7 @@ import util.LinR as LinR
 import util.LogR as LogR
 
 if __name__ == "__main__":
+    #hullo
     test_X = np.array([[1, 1],
                        [1, 2],
                        [1, 3],
