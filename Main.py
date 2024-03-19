@@ -18,9 +18,9 @@ if __name__ == "__main__":
                                  'red',
                                  'green',
                                  'green',
-                                 'red']))
+                                 'green']))
     log.d('knn', 'knn data passed requirements')
-    print(knn_0.test_point([0, 0, 0], 3))
+    print(knn_0.test_point([0, 1, 2], 6))
 
     """
     #hullo
