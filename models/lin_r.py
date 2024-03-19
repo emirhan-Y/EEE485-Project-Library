@@ -22,7 +22,8 @@ def ridge(X: np.array, y: np.array, lam: float):
     :param lam: hyperparameter lambda of ridge regression
     :return: the ridge regression parameters
     """
-
+    X = standardize(X)
+    y = y - np.mean(y)
     return np.matmul(np.matmul(inv(np.matmul(np.transpose(X), X) + lam * np.identity(X.shape[1])), np.transpose(X)), y)
 
 
@@ -36,3 +37,11 @@ def lasso(X: np.array, y: np.array, lam: float):
     :return: the lasso regression parameters
     """
     return np.matmul(np.matmul(inv(np.matmul(np.transpose(X), X)), np.transpose(X)), y)
+
+
+def standardize(X: np.array):
+    X_tilde = np.zeros([X.shape[0], X.shape[1] - 1])
+    for i in range(0, X.shape[1] - 1):
+        x_i_bar = np.mean(X[:, i + 1])
+        X_tilde[:, i] = (X[:, i + 1] - x_i_bar) / np.std(X[:, i + 1])
+    return X_tilde
