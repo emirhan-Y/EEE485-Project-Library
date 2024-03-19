@@ -7,31 +7,40 @@ from numpy.linalg import inv
 
 
 class knn:
+    """
+    K-Nearest Neighbor model
+    """
     def __init__(self, **kwargs):
-        self.__NO_DATA_POINTS_AT_INIT_FLAG = False
-        self.__NO_LABELS_AT_INIT_FLAG = False
-        self.__data_points = []
-        self.__labels = []
-        if 'data_points' in kwargs:
-            self.__data_point_loader(kwargs['data_points'])
-        else:
-            self.__no_data_at_initialization_flag = True
+        """
+        knn model constructor
+        :param kwargs:
+        """
+        self.__NO_DATA_POINTS_AT_INIT_FLAG = False  # set if no data points were given at the constructor
+        self.__NO_LABELS_AT_INIT_FLAG = False  # set if no labels were given at the constructor
+        self.__data_points = []  # initialize the data point array of the knn model as empty
+        self.__labels = []  # initialize the label array of the knn model as empty
+        if 'data_points' in kwargs:  # if data_points entry is given at the constructor
+            self.__data_point_loader(kwargs['data_points'])  # go to the data point array loader
+        else:  # if data_points entry is not given at the constructor
+            self.__no_data_at_initialization_flag = True  # set the no data point at constructor flag to true
 
-        if 'labels' in kwargs:
-            self.__label_loader(kwargs['labels'])
-        else:
-            self.__NO_LABELS_AT_INIT_FLAG = True
+        if 'labels' in kwargs:  # if labels entry is given at the constructor
+            self.__label_loader(kwargs['labels'])  # go to the label array loader
+        else:  # if labels entry is not given at the constructor
+            self.__NO_LABELS_AT_INIT_FLAG = True  # set the no label at constructor flag to true
 
-        if self.__NO_DATA_POINTS_AT_INIT_FLAG and not self.__NO_LABELS_AT_INIT_FLAG:
-            log.e('knn initialization error', 'Labels inputted without data points!')
+        if self.__NO_DATA_POINTS_AT_INIT_FLAG and not self.__NO_LABELS_AT_INIT_FLAG:  # if labels were given but not
+            # data points
+            log.e('knn initialization error', 'Labels inputted without data points!')  # raise an error
             raise knn_error('Loading labels to knn without data points is not allowed!')
 
-        if not self.__NO_DATA_POINTS_AT_INIT_FLAG and self.__NO_LABELS_AT_INIT_FLAG:
-            log.e('knn initialization error', 'Data points inputted without labels!')
+        if not self.__NO_DATA_POINTS_AT_INIT_FLAG and self.__NO_LABELS_AT_INIT_FLAG:  # if data points were given but
+            # not labels
+            log.e('knn initialization error', 'Data points inputted without labels!')  # raise an error
             raise knn_error('Loading data points to knn without labels is not allowed!')
 
-        if len(self.__data_points) != len(self.__labels):
-            log.e('knn initialization error', 'Data point and label array sizes are not equal')
+        if len(self.__data_points) != len(self.__labels):  # if the number of data points and labels do not match
+            log.e('knn initialization error', 'Data point and label array sizes are not equal')  # raise an error
             raise knn_error('Data point and label array size mismatch')
 
     def __data_point_loader(self, data_points):
