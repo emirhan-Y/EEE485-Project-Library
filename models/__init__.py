@@ -1,7 +1,13 @@
 """
-General model package of the project. Currently, it includes
-* KNN
-* Linear regression
+models
+======
+
+General model package of the project.
+
+Subpackages
+-----------
+* knn
+* linear_regression
 """
 
 from .knn import knn

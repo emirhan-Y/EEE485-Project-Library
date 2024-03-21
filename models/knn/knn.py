@@ -1,8 +1,10 @@
 """
 KNN model definitions
+=====================
 
-class:
-knn: holds the KNN data points and calculates test point results
+classes
+-------
+* knn: holds the KNN data points and calculates test point results
 """
 
 import numpy as np
@@ -15,7 +17,7 @@ from numpy.linalg import inv
 
 class knn:
     """
-    K-Nearest Neighbor model
+    K-Nearest Neighbor model class
     """
     def __init__(self, **kwargs):
         """

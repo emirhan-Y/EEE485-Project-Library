@@ -3,11 +3,8 @@ Logging module, used for generating formatted runtime messages to the console.
 
 Functions
 ---------
-* d(context, data): Log a debug message to the logger. Prints several parameters of the state of
-  the program, and any extra information provided by the user.
-
-* e(context, data): Log an error message to the logger. Prints several parameters of the state of
-  the program, and any extra information provided by the user.
+* d(context, data): Log a debug message to the logger.
+* e(context, data): Log an error message to the logger.
 
 Global variables
 ----------------

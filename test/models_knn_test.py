@@ -1,5 +1,7 @@
-"""KNN test script.
-KNN: TEST: PASSED
+"""
+KNN test script.
+================
+* KNN: TEST: PASSED
 """
 
 import numpy as np

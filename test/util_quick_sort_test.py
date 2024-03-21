@@ -1,6 +1,8 @@
-"""Quick sort trace/no trace test script.
-Quick sort without trace: TEST: PASSED
-Quick sort with trace: TEST: PASSED
+"""
+Quick sort trace/no trace test script.
+==============================
+* Quick sort without trace: TEST: PASSED
+* Quick sort with trace: TEST: PASSED
 """
 import random
 

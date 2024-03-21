@@ -1,5 +1,7 @@
-"""Linear regression test script.
-Linear regression: TEST: PASSED
+"""
+Linear regression test script.
+==============================
+* Linear regression: TEST: PASSED
 """
 import random
 

@@ -1,5 +1,10 @@
 """
+util
+====
 General utility package of the project. All helper methods and classes reside in this package
+
+Subpackages
+-----------
 * log
 * sort
 """
