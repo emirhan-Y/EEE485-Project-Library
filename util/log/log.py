@@ -1,12 +1,18 @@
 """
 Logging module, used for generating formatted runtime messages to the console.
-    Functions:
-        d(context, data)
-        e(context, data)
 
-    Global variables:
-        DEBUG : Flag to enable debug logs
-        ERROR : Flag to enable error logs
+Functions
+---------
+* d(context, data): Log a debug message to the logger. Prints several parameters of the state of
+  the program, and any extra information provided by the user.
+
+* e(context, data): Log an error message to the logger. Prints several parameters of the state of
+  the program, and any extra information provided by the user.
+
+Global variables
+----------------
+* DEBUG : Flag to enable debug logs
+* ERROR : Flag to enable error logs
 """
 
 import inspect
@@ -23,11 +29,17 @@ def d(context: str, data: str) -> None:
     """
     Log a debug message to the logger. Prints several parameters of the state of the program, and any extra
     information provided by the user.
-    :param context : str
-    Brief context behind the debug message
-    :param data : str
-    Any other context or information worth printing
-    :return: None
+
+    Parameters
+    ------------
+    context : str
+        Brief context behind the debug message
+    data : str
+        Any other context or information worth printing
+
+    Returns
+    -------
+    None
     """
     if DEBUG:
         print('{} {} {} {} {:<}'.format(Fore.LIGHTGREEN_EX + datetime.now().strftime("%H:%M:%S") +
@@ -45,9 +57,17 @@ def e(context: str, data: str) -> None:
     """
     Log an error message to the logger. Prints several parameters of the state of the program, and any extra
     information provided by the user.
-    :param context: Brief context behind the error message
-    :param data: Any other context or information worth printing
-    :return: None
+
+    Parameters
+    ------------
+    context : str
+        Brief context behind the error message
+    data : str
+        Any other context or information worth printing
+
+    Returns
+    -------
+    None
     """
     if ERROR:
         print('{:} {:} {:} {:} {:<}'.format(Fore.LIGHTGREEN_EX + datetime.now().strftime("%H:%M:%S") +
