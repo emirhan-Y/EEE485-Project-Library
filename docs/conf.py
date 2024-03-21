@@ -25,7 +25,8 @@ extensions = ["sphinx.ext.todo",
               "sphinx.ext.duration",
               "sphinx.ext.doctest",
               "sphinx.ext.autosummary",
-              "sphinx.ext.intersphinx"]
+              "sphinx.ext.intersphinx",
+              'python_docs_theme']
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),

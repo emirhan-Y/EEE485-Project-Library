@@ -1,4 +1,4 @@
 sphinx==7.1.2
-python_docs_theme
+python-docs-theme
 numpy
 colorama
