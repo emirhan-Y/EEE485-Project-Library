@@ -8,25 +8,10 @@ Subpackages
    :maxdepth: 4
 
    models.knn
-
-Submodules
-----------
-
-models.lin\_r module
---------------------
-
-.. automodule:: models.lin_r
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-models.log\_r module
---------------------
-
-.. automodule:: models.log_r
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   models.lasso_regression
+   models.linear_regression
+   models.logistic_regression
+   models.ridge_regression
 
 Module contents
 ---------------

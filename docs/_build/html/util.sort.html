@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>util.sort package &mdash; EEE485-Project v0.1. documentation</title>
+  <title>util.sort package &mdash; EEE485-Project-Library v0.1. documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
@@ -33,7 +33,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            EEE485-Project
+            EEE485-Project-Library
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -46,9 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">EEE485-Project-Library</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Main.html">Main module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html">models package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sort_test.html">sort_test module</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="util.html">util package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="util.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="util.log.html">util.log package</a></li>
@@ -68,7 +66,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">EEE485-Project</a>
+          <a href="index.html">EEE485-Project-Library</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -95,19 +93,35 @@
 </section>
 <section id="module-util.sort.quick_sort">
 <span id="util-sort-quick-sort-module"></span><h2>util.sort.quick_sort module<a class="headerlink" href="#module-util.sort.quick_sort" title="Link to this heading"></a></h2>
+<p>Quick sort module</p>
+<p>methods:
+* quick_sort(values): sorts the given array with comparable items
+* quick_sort_with_trace(values, trace): sorts the given array with comparable items alongside a trace array</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="util.sort.quick_sort.quick_sort">
-<span class="sig-prename descclassname"><span class="pre">util.sort.quick_sort.</span></span><span class="sig-name descname"><span class="pre">quick_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/util/sort/quick_sort.html#quick_sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#util.sort.quick_sort.quick_sort" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">util.sort.quick_sort.</span></span><span class="sig-name descname"><span class="pre">quick_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/util/sort/quick_sort.html#quick_sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#util.sort.quick_sort.quick_sort" title="Link to this definition"></a></dt>
+<dd><p>Sort a given list of comparable values (int, float, str etc.)
+:param values: List to sort
+:return: Sorted version of the same list</p>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="util.sort.quick_sort.quick_sort_with_trace">
-<span class="sig-prename descclassname"><span class="pre">util.sort.quick_sort.</span></span><span class="sig-name descname"><span class="pre">quick_sort_with_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trace</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/util/sort/quick_sort.html#quick_sort_with_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#util.sort.quick_sort.quick_sort_with_trace" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">util.sort.quick_sort.</span></span><span class="sig-name descname"><span class="pre">quick_sort_with_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a></span></span><a class="reference internal" href="_modules/util/sort/quick_sort.html#quick_sort_with_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#util.sort.quick_sort.quick_sort_with_trace" title="Link to this definition"></a></dt>
+<dd><p>Sort a given list of comparable values (int, float, str etc.), and apply all same swapping operations to the trace
+array
+:param values: List to sort
+:param trace: The tracer list. All swaps applied to the value array will be applied to the trace array
+:return: Sorted version of the same list and the modified trace list
+:rtype: tuple</p>
+</dd></dl>
 
 </section>
 <section id="module-util.sort">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-util.sort" title="Link to this heading"></a></h2>
+<p>General sort utility package. Includes
+* Quick sort
+* Quick sort with trace</p>
 </section>
 </section>
 

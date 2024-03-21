@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>models.knn package &mdash; EEE485-Project-Library v0.1. documentation</title>
+  <title>models.ridge_regression package &mdash; EEE485-Project-Library v0.1. documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
@@ -21,8 +21,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="models.lasso_regression package" href="models.lasso_regression.html" />
-    <link rel="prev" title="models package" href="models.html" /> 
+    <link rel="next" title="util package" href="util.html" />
+    <link rel="prev" title="models.logistic_regression package" href="models.logistic_regression.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,11 +49,11 @@
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">EEE485-Project-Library</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="models.html">models package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="models.html#subpackages">Subpackages</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">models.knn package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.knn.html">models.knn package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="models.lasso_regression.html">models.lasso_regression package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="models.linear_regression.html">models.linear_regression package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="models.logistic_regression.html">models.logistic_regression package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="models.ridge_regression.html">models.ridge_regression package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">models.ridge_regression package</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="models.html#module-models">Module contents</a></li>
@@ -80,9 +80,9 @@
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="modules.html">EEE485-Project-Library</a></li>
           <li class="breadcrumb-item"><a href="models.html">models package</a></li>
-      <li class="breadcrumb-item active">models.knn package</li>
+      <li class="breadcrumb-item active">models.ridge_regression package</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/models.knn.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/models.ridge_regression.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -90,44 +90,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="models-knn-package">
-<h1>models.knn package<a class="headerlink" href="#models-knn-package" title="Link to this heading"></a></h1>
+  <section id="models-ridge-regression-package">
+<h1>models.ridge_regression package<a class="headerlink" href="#models-ridge-regression-package" title="Link to this heading"></a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="module-models.knn.knn">
-<span id="models-knn-knn-module"></span><h2>models.knn.knn module<a class="headerlink" href="#module-models.knn.knn" title="Link to this heading"></a></h2>
-<p>KNN model definitions</p>
-<p>class:
-knn: holds the KNN data points and calculates test point results</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="models.knn.knn.knn">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.knn.knn.</span></span><span class="sig-name descname"><span class="pre">knn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/knn/knn.html#knn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.knn.knn.knn" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>K-Nearest Neighbor model</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="models.knn.knn.knn.test_point">
-<span class="sig-name descname"><span class="pre">test_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/knn/knn.html#knn.test_point"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.knn.knn.knn.test_point" title="Link to this definition"></a></dt>
+<section id="module-models.ridge_regression.ridge_regression">
+<span id="models-ridge-regression-ridge-regression-module"></span><h2>models.ridge_regression.ridge_regression module<a class="headerlink" href="#module-models.ridge_regression.ridge_regression" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="models.ridge_regression.ridge_regression.ridge">
+<span class="sig-prename descclassname"><span class="pre">models.ridge_regression.ridge_regression.</span></span><span class="sig-name descname"><span class="pre">ridge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/ridge_regression/ridge_regression.html#ridge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.ridge_regression.ridge_regression.ridge" title="Link to this definition"></a></dt>
+<dd><p>apply ridge regression (L2 regularization) on a given set of data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – is expected in the regular design matrix format X = (1 x1 x2 …) size = n x (p+1)</p></li>
+<li><p><strong>y</strong> – measured response vector (is a row vector by default by python, but in mathematical terms, it is a column vector)</p></li>
+<li><p><strong>lam</strong> – hyperparameter lambda of ridge regression</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the ridge regression parameters</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="models.ridge_regression.ridge_regression.standardize">
+<span class="sig-prename descclassname"><span class="pre">models.ridge_regression.ridge_regression.</span></span><span class="sig-name descname"><span class="pre">standardize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/ridge_regression/ridge_regression.html#standardize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.ridge_regression.ridge_regression.standardize" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
-</dd></dl>
-
 </section>
-<section id="module-models.knn.knn_error">
-<span id="models-knn-knn-error-module"></span><h2>models.knn.knn_error module<a class="headerlink" href="#module-models.knn.knn_error" title="Link to this heading"></a></h2>
-<p>KNN model error handlers</p>
-<p>class:
-knn_error: manage error generated by the knn model</p>
-<dl class="py exception">
-<dt class="sig sig-object py" id="models.knn.knn_error.knn_error">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.knn.knn_error.</span></span><span class="sig-name descname"><span class="pre">knn_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/knn/knn_error.html#knn_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.knn.knn_error.knn_error" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
-</dd></dl>
-
-</section>
-<section id="module-models.knn">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-models.knn" title="Link to this heading"></a></h2>
-<p>KNN model library</p>
+<section id="module-models.ridge_regression">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-models.ridge_regression" title="Link to this heading"></a></h2>
 </section>
 </section>
 
@@ -135,8 +130,8 @@ knn_error: manage error generated by the knn model</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="models.html" class="btn btn-neutral float-left" title="models package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="models.lasso_regression.html" class="btn btn-neutral float-right" title="models.lasso_regression package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="models.logistic_regression.html" class="btn btn-neutral float-left" title="models.logistic_regression package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="util.html" class="btn btn-neutral float-right" title="util package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

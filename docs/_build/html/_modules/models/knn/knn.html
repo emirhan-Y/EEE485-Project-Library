@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>models.knn.knn &mdash; EEE485-Project v0.1. documentation</title>
+  <title>models.knn.knn &mdash; EEE485-Project-Library v0.1. documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
 
@@ -31,7 +31,7 @@
           
           
           <a href="../../../index.html" class="icon icon-home">
-            EEE485-Project
+            EEE485-Project-Library
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -52,7 +52,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">EEE485-Project</a>
+          <a href="../../../index.html">EEE485-Project-Library</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -71,7 +71,14 @@
            <div itemprop="articleBody">
              
   <h1>Source code for models.knn.knn</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">KNN model definitions</span>
+
+<span class="sd">class:</span>
+<span class="sd">knn: holds the KNN data points and calculates test point results</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">util</span> <span class="kn">import</span> <span class="n">quick_sort_with_trace</span>
 <span class="kn">from</span> <span class="nn">.knn_error</span> <span class="kn">import</span> <span class="n">knn_error</span>
