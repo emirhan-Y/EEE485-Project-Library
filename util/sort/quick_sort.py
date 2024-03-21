@@ -57,7 +57,7 @@ def quick_sort_with_trace(values: np.ndarray, trace: np.ndarray) -> tuple:
         The tracer list. All swaps applied to the value array will be applied to the trace array
 
     returns
-    ------
+    -------
     values: np.ndarray or list
         Sorted version of the original input list (redant as the operations are destructive, and the original variable
         changes anyway)
