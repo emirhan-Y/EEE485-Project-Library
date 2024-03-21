@@ -1,7 +1,21 @@
+"""
+Quick sort module
+
+methods:
+* quick_sort(values): sorts the given array with comparable items
+* quick_sort_with_trace(values, trace): sorts the given array with comparable items alongside a trace array
+"""
+import numpy as np
+
 from util import log
 
 
-def quick_sort(values):
+def quick_sort(values: np.ndarray) -> np.ndarray:
+    """
+    Sort a given list of comparable values (int, float, str etc.)
+    :param values: List to sort
+    :return: Sorted version of the same list
+    """
     pivot = values[0]
     last_index_before_pivot = 0
     for i in range(1, len(values)):
@@ -20,7 +34,15 @@ def quick_sort(values):
     return values
 
 
-def quick_sort_with_trace(values, trace):
+def quick_sort_with_trace(values: np.ndarray, trace: np.ndarray) -> tuple:
+    """
+    Sort a given list of comparable values (int, float, str etc.), and apply all same swapping operations to the trace
+    array
+    :param values: List to sort
+    :param trace: The tracer list. All swaps applied to the value array will be applied to the trace array
+    :return: Sorted version of the same list and the modified trace list
+    :rtype: tuple
+    """
     if len(values) != len(trace):
         log.e('Quick sort', 'Trace vector size is not equal to the data vector')
         raise RuntimeError('Quick sort trace size mismatch!')

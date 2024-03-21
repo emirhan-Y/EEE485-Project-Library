@@ -1,3 +1,10 @@
+"""
+KNN model definitions
+
+class:
+knn: holds the KNN data points and calculates test point results
+"""
+
 import numpy as np
 
 from util import quick_sort_with_trace
