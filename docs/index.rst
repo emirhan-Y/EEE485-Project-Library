@@ -1,10 +1,10 @@
-.. EEE485-Project-Library documentation master file, created by
-   sphinx-quickstart on Thu Mar 21 20:27:05 2024.
+.. asd documentation master file, created by
+   sphinx-quickstart on Fri Mar 22 22:03:46 2024.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to EEE485-Project-Library's documentation!
-==================================================
+Welcome to asd's documentation!
+===============================
 
 .. toctree::
    :maxdepth: 2
