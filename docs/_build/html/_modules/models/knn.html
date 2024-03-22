@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>models.knn &#8212; EEE485-Project-Library v0.1. documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=e8a97c27" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=b20cc3f5" />
+    
+    <script src="../../_static/documentation_options.js?v=c7f398d4"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/py.svg" />
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="../../_static/py.svg" alt="Python logo"/>
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" />
+                <input type="submit" value="Go"/>
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">EEE485-Project-Library v0.1. documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">models.knn</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box" />
+          <input type="submit" value="Go" />
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for models.knn</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">KNN model definitions</span>
+<span class="sd">=====================</span>
+
+<span class="sd">classes</span>
+<span class="sd">-------</span>
+<span class="sd">* knn: holds the KNN data points and calculates test point results</span>
+<span class="sd">* knn_error: manage error generated by the knn model</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">util</span> <span class="kn">import</span> <span class="n">log</span>
+<span class="kn">from</span> <span class="nn">util</span> <span class="kn">import</span> <span class="n">quick_sort_with_trace</span>
+
+
+<div class="viewcode-block" id="knn">
+<a class="viewcode-back" href="../../models.html#models.knn.knn">[docs]</a>
+<span class="k">class</span> <span class="nc">knn</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    K-Nearest Neighbor model class</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">DEBUG_MSG</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">ERROR_MSG</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">LOGGER</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">DEBUG_MSG</span><span class="p">,</span> <span class="n">ERROR_MSG</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        knn model constructor</span>
+<span class="sd">        :param kwargs:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__NO_DATA_POINTS_AT_INIT_FLAG</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># set if no data points were given at the constructor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__NO_LABELS_AT_INIT_FLAG</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># set if no labels were given at the constructor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__data_points</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># initialize the data point array of the knn model as empty</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__labels</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># initialize the label array of the knn model as empty</span>
+        <span class="k">if</span> <span class="s1">&#39;data_points&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>  <span class="c1"># if data_points entry is given at the constructor</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__data_point_loader</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;data_points&#39;</span><span class="p">])</span>  <span class="c1"># go to the data point array loader</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># if data_points entry is not given at the constructor</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__no_data_at_initialization_flag</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># set the no data point at constructor flag to true</span>
+
+        <span class="k">if</span> <span class="s1">&#39;labels&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>  <span class="c1"># if labels entry is given at the constructor</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__label_loader</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">])</span>  <span class="c1"># go to the label array loader</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># if labels entry is not given at the constructor</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__NO_LABELS_AT_INIT_FLAG</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># set the no label at constructor flag to true</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__NO_DATA_POINTS_AT_INIT_FLAG</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__NO_LABELS_AT_INIT_FLAG</span><span class="p">:</span>  <span class="c1"># if labels were given but not</span>
+            <span class="c1"># data points</span>
+            <span class="n">knn</span><span class="o">.</span><span class="n">LOGGER</span><span class="o">.</span><span class="n">error_message</span><span class="p">(</span><span class="s1">&#39;knn initialization error&#39;</span><span class="p">,</span>
+                                     <span class="s1">&#39;Labels inputted without data points!&#39;</span><span class="p">)</span>  <span class="c1"># raise an error</span>
+            <span class="k">raise</span> <span class="n">knn_error</span><span class="p">(</span><span class="s1">&#39;Loading labels to knn without data points is not allowed!&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__NO_DATA_POINTS_AT_INIT_FLAG</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__NO_LABELS_AT_INIT_FLAG</span><span class="p">:</span>  <span class="c1"># if data points were given but</span>
+            <span class="c1"># not labels</span>
+            <span class="n">knn</span><span class="o">.</span><span class="n">LOGGER</span><span class="o">.</span><span class="n">error_message</span><span class="p">(</span><span class="s1">&#39;knn initialization error&#39;</span><span class="p">,</span>
+                                     <span class="s1">&#39;Data points inputted without labels!&#39;</span><span class="p">)</span>  <span class="c1"># raise an error</span>
+            <span class="k">raise</span> <span class="n">knn_error</span><span class="p">(</span><span class="s1">&#39;Loading data points to knn without labels is not allowed!&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__data_points</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__labels</span><span class="p">):</span>  <span class="c1"># if the number of data points and labels do not match</span>
+            <span class="n">knn</span><span class="o">.</span><span class="n">LOGGER</span><span class="o">.</span><span class="n">error_message</span><span class="p">(</span><span class="s1">&#39;knn initialization error&#39;</span><span class="p">,</span>
+                                     <span class="s1">&#39;Data point and label array sizes are not equal&#39;</span><span class="p">)</span>  <span class="c1"># raise an error</span>
+            <span class="k">raise</span> <span class="n">knn_error</span><span class="p">(</span><span class="s1">&#39;Data point and label array size mismatch&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__data_point_loader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_points</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="ow">or</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load the given data set in the constructor to the knn instance</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ------------</span>
+<span class="sd">        data_points : 2d np.ndarray or list</span>
+<span class="sd">            Data points to apply the KNN on.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data_points</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>  <span class="c1"># ndarray conversions</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__data_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data_points</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data_points</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__data_points</span> <span class="o">=</span> <span class="n">data_points</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># error if inconvertible</span>
+            <span class="n">knn</span><span class="o">.</span><span class="n">LOGGER</span><span class="o">.</span><span class="n">error_message</span><span class="p">(</span><span class="s1">&#39;knn input type mismatch&#39;</span><span class="p">,</span>
+                                     <span class="s1">&#39;Expected type list or ndarray for data point input, got &#39;</span> <span class="o">+</span> <span class="nb">type</span><span class="p">(</span>
+                                         <span class="n">data_points</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">&#39; instead&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">knn_error</span><span class="p">(</span><span class="s1">&#39;knn invalid data point input type&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__label_loader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="ow">or</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load the given data set labels in the constructor to the knn instance</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ------------</span>
+<span class="sd">        labels : 2d np.ndarray or list</span>
+<span class="sd">            Data point labels to apply the KNN on.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>  <span class="c1"># ndarray conversions</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__labels</span> <span class="o">=</span> <span class="n">labels</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># error if inconvertible</span>
+            <span class="n">knn</span><span class="o">.</span><span class="n">LOGGER</span><span class="o">.</span><span class="n">error_message</span><span class="p">(</span><span class="s1">&#39;knn input type mismatch&#39;</span><span class="p">,</span>
+                                     <span class="s1">&#39;Expected type list or ndarray for label input, got &#39;</span> <span class="o">+</span> <span class="nb">type</span><span class="p">(</span>
+                                         <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">&#39; instead&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">knn_error</span><span class="p">(</span><span class="s1">&#39;knn invalid label input type&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="knn.test_point">
+<a class="viewcode-back" href="../../models.html#models.knn.knn.test_point">[docs]</a>
+    <span class="k">def</span> <span class="nf">test_point</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">K</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get KNN prediction on a new point.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        test_x : np.ndarray or list</span>
+<span class="sd">            Test point to get the KNN prediction on.</span>
+
+<span class="sd">        K: int</span>
+<span class="sd">            The value of K for this given data point.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        y_hat: list of label_type</span>
+<span class="sd">            An array of predicted values of the label given test point and K value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>  <span class="c1"># ndarray conversions</span>
+            <span class="k">pass</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">test_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">knn</span><span class="o">.</span><span class="n">LOGGER</span><span class="o">.</span><span class="n">error_message</span><span class="p">(</span><span class="s1">&#39;Invalid test point type&#39;</span><span class="p">,</span>
+                                     <span class="s1">&#39;KNN test_point should be of type np.ndarray or list, but got &#39;</span> <span class="o">+</span> <span class="nb">type</span><span class="p">(</span>
+                                         <span class="n">test_x</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">&#39; instead&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Invalid KNN test point type: &#39;</span> <span class="o">+</span> <span class="nb">type</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="c1"># create a new array with rows [this point&#39;s distance to test point, this point&#39;s label]</span>
+        <span class="n">distance_vector_with_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__labels</span><span class="p">),</span> <span class="mi">2</span><span class="p">])</span>
+        <span class="n">distance_vector_with_labels</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">__data_points</span> <span class="o">-</span> <span class="n">test_x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">distance_vector_with_labels</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__labels</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="c1"># sort the array according to the distances</span>
+        <span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">distance_vector_with_labels</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="n">distance_vector_with_labels_sorted</span> <span class="o">=</span> <span class="n">distance_vector_with_labels</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+        <span class="c1"># find the most recurring label among the K points with the smallest distance</span>
+        <span class="n">res_label_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">res_label_count</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">distance_vector_with_labels_sorted</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">res_label_list</span><span class="p">:</span>
+                <span class="n">res_label_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">distance_vector_with_labels_sorted</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">res_label_count</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="n">res_label_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">distance_vector_with_labels_sorted</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">res_label_count</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">res_label_count</span><span class="p">,</span> <span class="n">res_label_list</span> <span class="o">=</span> <span class="n">quick_sort_with_trace</span><span class="p">(</span><span class="n">res_label_count</span><span class="p">,</span> <span class="n">res_label_list</span><span class="p">)</span>
+        <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">res_label_list</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">res_label_count</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">res_label_count</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="k">break</span>
+            <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">y_hat</span> <span class="o">=</span> <span class="n">res_label_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cnt</span><span class="p">:]</span>
+        <span class="k">return</span> <span class="n">y_hat</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="knn_error">
+<a class="viewcode-back" href="../../models.html#models.knn.knn_error">[docs]</a>
+<span class="k">class</span> <span class="nc">knn_error</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">EEE485-Project-Library v0.1. documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">models.knn</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box" />
+          <input type="submit" value="Go" />
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; Copyright 2024, Emirhan Yagcioglu, Yusuf Berkan Gokce.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    
+    
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on None.
+    
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+
+  </body>
+</html>
