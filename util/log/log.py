@@ -18,6 +18,14 @@ from colorama import Fore
 
 
 class log:
+    """
+    log
+    ===
+
+    Console interface class used for outputting user specified the debug and error messages to the console.
+
+    Use the methods of the class to control and send messages.
+    """
     def __init__(self, debug_enable: bool, error_enable: bool):
         """
         Create the log special to that class. It is recommended to use only one logger present at a time.
@@ -35,18 +43,33 @@ class log:
         """Flag to enable error logs"""
 
     def enable_debug_log(self):
+        """
+        Enable debug messages
+        """
         self.__DEBUG = True
 
     def disable_debug_log(self):
+        """
+        Disable debug messages
+        """
         self.__DEBUG = False
 
     def enable_error_log(self):
+        """
+        Enable error messages
+        """
         self.__ERROR = True
 
     def disable_error_log(self):
+        """
+        Disable error messages
+        """
         self.__ERROR = False
 
     def close(self):
+        """
+        Close this instantiation of logger, to prevent erroneous outputs in the future
+        """
         print('{} {} {} {}'.format(Fore.LIGHTGREEN_EX + datetime.now().strftime("%H:%M:%S") +
                                    Fore.LIGHTBLACK_EX + " |",
                                    Fore.LIGHTWHITE_EX + inspect.getfile(inspect.stack()[1][0]).rsplit("\\")[

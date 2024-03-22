@@ -206,10 +206,14 @@
 <dt class="sig sig-object py" id="util.log.log.log">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">util.log.log.</span></span><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">debug_enable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_enable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/util/log/log.html#log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#util.log.log.log" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>===</p>
+<p>Console interface class used for outputting user specified the debug and error messages to the console.</p>
+<p>Use the methods of the class to control and send messages.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="util.log.log.log.close">
 <span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/util/log/log.html#log.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#util.log.log.log.close" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Close this instantiation of logger, to prevent erroneous outputs in the future</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="util.log.log.log.debug_message">
@@ -230,22 +234,26 @@ information provided by the user.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="util.log.log.log.disable_debug_log">
 <span class="sig-name descname"><span class="pre">disable_debug_log</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/util/log/log.html#log.disable_debug_log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#util.log.log.log.disable_debug_log" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Disable debug messages</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="util.log.log.log.disable_error_log">
 <span class="sig-name descname"><span class="pre">disable_error_log</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/util/log/log.html#log.disable_error_log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#util.log.log.log.disable_error_log" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Disable error messages</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="util.log.log.log.enable_debug_log">
 <span class="sig-name descname"><span class="pre">enable_debug_log</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/util/log/log.html#log.enable_debug_log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#util.log.log.log.enable_debug_log" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Enable debug messages</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="util.log.log.log.enable_error_log">
 <span class="sig-name descname"><span class="pre">enable_error_log</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/util/log/log.html#log.enable_error_log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#util.log.log.log.enable_error_log" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Enable error messages</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="util.log.log.log.error_message">
