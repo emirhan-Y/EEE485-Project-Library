@@ -1,15 +1,17 @@
 """
-Logging class, used for generating formatted runtime messages to the console.
-
-Functions
----------
-* debug_message(context, data): Log a debug message to the logger.
-* error_message(context, data): Log an error message to the logger.
+Console interface class used for outputting user specified messages to the console.
 
 Variables
 ----------------
-* DEBUG : Flag to enable debug logs
-* ERROR : Flag to enable error logs
+* _DEBUG : Flag to enable debug messages
+* _WARNING : Flag to enable warning messages
+* _ERROR : Flag to enable error messages
+
+Methods
+-------
+* debug_message(context, data): Log a debug message to the logger.
+* warning_message(context, data): Log a warning message to the logger.
+* error_message(context, data): Log an error message to the logger.
 """
 
 import inspect
@@ -18,69 +20,49 @@ from colorama import Fore
 
 
 class log:
-    """
-    log
-    ===
-
-    Console interface class used for outputting user specified the debug and error messages to the console.
-
-    Use the methods of the class to control and send messages.
-    """
-    def __init__(self, debug_enable: bool, error_enable: bool):
-        """
-        Create the log special to that class. It is recommended to use only one logger present at a time.
-
-        Parameters
-        ------------
-        debug_enable : bool
-            Set True to enable debug messages
-        error_enable : bool
-            Set True to enable error messages
-        """
-        self.__DEBUG = debug_enable
-        """Flag to enable debug logs"""
-        self.__ERROR = error_enable
-        """Flag to enable error logs"""
+    def __init__(self, debug_enable, warning_enable, error_enable):
+        self._DEBUG = debug_enable
+        """Flag to enable debug messages"""
+        self._WARNING = warning_enable
+        """Flag to enable warning messages"""
+        self._ERROR = error_enable
+        """Flag to enable error messages"""
 
     def enable_debug_log(self):
         """
         Enable debug messages
         """
-        self.__DEBUG = True
+        self._DEBUG = True
 
     def disable_debug_log(self):
         """
         Disable debug messages
         """
-        self.__DEBUG = False
+        self._DEBUG = False
+
+    def enable_warning_log(self):
+        """
+        Enable warning messages
+        """
+        self._WARNING = True
+
+    def disable_warning_log(self):
+        """
+        Disable warning messages
+        """
+        self._WARNING = False
 
     def enable_error_log(self):
         """
         Enable error messages
         """
-        self.__ERROR = True
+        self._ERROR = True
 
     def disable_error_log(self):
         """
         Disable error messages
         """
-        self.__ERROR = False
-
-    def close(self):
-        """
-        Close this instantiation of logger, to prevent erroneous outputs in the future
-        """
-        print('{} {} {} {}'.format(Fore.LIGHTGREEN_EX + datetime.now().strftime("%H:%M:%S") +
-                                   Fore.LIGHTBLACK_EX + " |",
-                                   Fore.LIGHTWHITE_EX + inspect.getfile(inspect.stack()[1][0]).rsplit("\\")[
-                                       -1] + ",",
-                                   Fore.LIGHTYELLOW_EX + inspect.getmodule(
-                                       inspect.stack()[1][0]).__name__ + ',' +
-                                   Fore.YELLOW + ' line ' + str(inspect.stack()[1].lineno) +
-                                   Fore.LIGHTBLACK_EX + " |",
-                                   Fore.LIGHTRED_EX + 'logger disabled' + "."
-                                   + Fore.LIGHTWHITE_EX))
-        del self
+        self._ERROR = False
 
     def debug_message(self, context: str, data: str) -> None:
         """
@@ -94,7 +76,7 @@ class log:
         data : str
             Any other context or information worth printing
         """
-        if self.__DEBUG:
+        if self._DEBUG:
             print('{} {} {} {} {:<}'.format(Fore.LIGHTGREEN_EX + datetime.now().strftime("%H:%M:%S") +
                                             Fore.LIGHTBLACK_EX + " |",
                                             Fore.LIGHTWHITE_EX + inspect.getfile(inspect.stack()[1][0]).rsplit("\\")[
@@ -105,6 +87,30 @@ class log:
                                             Fore.LIGHTBLACK_EX + " |",
                                             Fore.LIGHTBLUE_EX + context + ":",
                                             Fore.BLUE + data + "." + Fore.LIGHTWHITE_EX))
+
+    def warning_message(self, context: str, data: str) -> None:
+        """
+        Log a warning message to the logger. Prints several parameters of the state of the program, and any extra
+        information provided by the user.
+
+        Parameters
+        ------------
+        context : str
+            Brief context behind the warning message
+        data : str
+            Any other context or information worth printing
+        """
+        if self._WARNING:
+            print('{} {} {} {} {:<}'.format(Fore.LIGHTGREEN_EX + datetime.now().strftime("%H:%M:%S") +
+                                            Fore.LIGHTBLACK_EX + " |",
+                                            Fore.LIGHTWHITE_EX + inspect.getfile(inspect.stack()[1][0]).rsplit("\\")[
+                                                -1] + ",",
+                                            Fore.LIGHTYELLOW_EX + inspect.getmodule(
+                                                inspect.stack()[1][0]).__name__ + ',' +
+                                            Fore.YELLOW + ' line ' + str(inspect.stack()[1].lineno) +
+                                            Fore.LIGHTBLACK_EX + " |",
+                                            Fore.LIGHTRED_EX + context + ":",
+                                            Fore.LIGHTYELLOW_EX + data + "." + Fore.LIGHTWHITE_EX))
 
     def error_message(self, context: str, data: str) -> None:
         """
@@ -117,12 +123,8 @@ class log:
             Brief context behind the error message
         data : str
             Any other context or information worth printing
-
-        Returns
-        -------
-        None
         """
-        if self.__ERROR:
+        if self._ERROR:
             print('{:} {:} {:} {:} {:<}'.format(Fore.LIGHTGREEN_EX + datetime.now().strftime("%H:%M:%S") +
                                                 Fore.LIGHTBLACK_EX + " |",
                                                 Fore.LIGHTWHITE_EX +

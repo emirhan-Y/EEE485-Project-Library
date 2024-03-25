@@ -27,5 +27,4 @@ the logger output::
     ... log.debug_message("context", "data")
     ---
 """
-
 from .log import log

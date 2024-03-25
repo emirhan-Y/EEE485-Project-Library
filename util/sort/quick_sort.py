@@ -1,5 +1,6 @@
 """
 Quick sort module
+=================
 
 Functions
 ---------
@@ -9,6 +10,9 @@ Functions
 import numpy as np
 
 from util import log
+
+_LOGGER = log(True, True, True)
+"""Module logger"""
 
 
 def quick_sort(values: np.ndarray or list) -> np.ndarray:
@@ -52,7 +56,7 @@ def quick_sort_with_trace(values: np.ndarray or list, trace: np.ndarray or list)
     Parameters
     ----------
     values : np.ndarray or list
-        List with values to sort
+        Values to sort
     trace : np.ndarray or list
         The tracer list. All swaps applied to the value array will be applied to the trace array
 
@@ -64,9 +68,8 @@ def quick_sort_with_trace(values: np.ndarray or list, trace: np.ndarray or list)
     trace: np.ndarray or list
         The modified trace list (redant as the operations are destructive, and the original variable changes anyway)
     """
-    logger = log(False, True)
     if len(values) != len(trace):
-        logger.error_message('Quick sort', 'Trace vector size is not equal to the data vector')
+        _LOGGER.error_message('Quick sort', 'Trace vector size is not equal to the data vector')
         raise RuntimeError('Quick sort trace size mismatch!')
     pivot = values[0]
     last_index_before_pivot = 0
