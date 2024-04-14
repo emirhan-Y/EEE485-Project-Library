@@ -1,24 +1,25 @@
 import numpy as np
 
-def activation_interpreter(activations_type: str):
-    match
-    return
+
 class dense_layer:
-    def __init__(self, X_size, Y_size, activation_type):
-        self._W = np.random.randn(Y_size, X_size)
-        self._B = np.random.randn(Y_size, 1)
+    def __init__(self, X_size, V_size):
+        self._W = np.random.randn(V_size, X_size)
+        self._B = np.random.randn(V_size, 1)
         self._X = None
-        self._phi, self._d_phi = activation_interpreter(activation_type)
 
     def fwd_prop(self, X):
         self._X = X
         return np.dot(self._W, self._X) + self._B
 
-    def bck_prop(self, dE_dY, eta):
-        dE_dW = np.dot(dE_dY, self._X.T)
+    def bck_prop(self, dE_dV, eta):
+        dE_dW = np.multiply(dE_dV, self._X.T)
+        dE_dX = np.dot(self._W.T, dE_dV)
         self._W -= eta * dE_dW
-        self._B -= eta * dE_dY
-        dE_dX = np.dot(self._W.T, dE_dY)
+        self._B -= eta * dE_dV
         return dE_dX
 
+    def get_W(self):
+        return self._W
 
+    def get_B(self):
+        return self._B
