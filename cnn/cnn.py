@@ -12,4 +12,3 @@ class cnn:
         current_reverse_derivative = derivative_of_loss_wrt_final_output
         for layer in reversed(self._layers):
             current_reverse_derivative = layer.bck_prop(current_reverse_derivative, eta)
-

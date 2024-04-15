@@ -2,14 +2,15 @@ import numpy as np
 
 
 class dense_layer:
-    def __init__(self, X_size, V_size):
-        self._W = np.random.randn(V_size, X_size)
-        self._B = np.random.randn(V_size, 1)
+    def __init__(self, X_size, V_size, rng):
+        self._W = rng.standard_normal(size=(V_size, X_size), dtype=np.float64) * 1e-3
+        self._B = rng.standard_normal(size=(V_size, 1), dtype=np.float64) * 1e-3
         self._X = None
 
     def fwd_prop(self, X):
         self._X = X
-        return np.dot(self._W, self._X) + self._B
+        V = np.dot(self._W, self._X) + self._B
+        return V
 
     def bck_prop(self, dE_dV, eta):
         dE_dW = np.multiply(dE_dV, self._X.T)
