@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class activation_layer:
     def __init__(self, activation_type):
         self._activator, self._activator_derivative = self._activation_interpreter(activation_type)
@@ -18,8 +19,16 @@ class activation_layer:
 
     def fwd_prop(self, X):
         self._X = X
-        return self._activator(X)
+        try:
+            V = self._activator(X)
+        except Warning:
+            raise RuntimeError('Error: Division by Zero')
+        return V
 
     def bck_prop(self, dE_dV, eta):
-        dV_dX = self._activator_derivative(self._X)
-        return np.multiply(dE_dV, dV_dX)
+        try:
+            dV_dX = self._activator_derivative(self._X)
+        except Warning:
+            raise RuntimeError('Error: Division by Zero')
+        dE_dX = np.multiply(dE_dV, dV_dX)
+        return dE_dX
