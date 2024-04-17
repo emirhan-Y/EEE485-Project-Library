@@ -58,9 +58,11 @@ if __name__ == '__main__':
     elapsed = time.time() - start
     print(f'Using Pool, time elapsed: {elapsed}')'''
 
+    epsilon = 1e-9  # small number to stabilize log
     stop = False
     epoch = 1
-    while not stop:
+    max_epochs = 100  # for example
+    while not stop and epoch <= max_epochs:
         E = 0
         train_c = 0
         dE_dY = np.zeros_like(train_Y[0])
@@ -70,10 +72,11 @@ if __name__ == '__main__':
             Y_hat = cnn.fwd_prop(cur_X)
             if cur_Y.argmax() == Y_hat.argmax():
                 train_c += 1
-            E -= np.sum(cur_Y * np.log(Y_hat))
-            dE_dY -= cur_Y / Y_hat
+            E -= np.sum(cur_Y * np.log(Y_hat + epsilon))
+            dE_dY -= cur_Y / (Y_hat + epsilon)
         print(f'Loss: {E}')
         print(f'Training accuracy: {train_c / len(train_X)}')
+        E /= len(train_X)
         dE_dY /= len(train_X)
         cnn.bck_prop(dE_dY, 1)
         print(f'epoch: {epoch} complete')
