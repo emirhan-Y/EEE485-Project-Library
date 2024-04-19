@@ -1,83 +1,109 @@
+from sklearn.model_selection import train_test_split
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from analysis import pca
 import sys
 
 
-def add_column_ones_design_matrix(X):
+def add_column_ones_design_matrix(x):
     """
-        Adds a column of 1's to the design matrix for the bias term.
-
+        Adds a column of 1's to column index 0 of x
         Parameters
         ----------
-        X : Design Matrix
-
-        Returns
-        -------
-        Returns the new design matrix X, which the first column is all 1's.
+        x : input numpy array
         """
     # Add column 1 to the design matrix
-    ones_column = np.ones((X.shape[0], 1))
-    return np.hstack((ones_column, X))
+    ones_column = np.ones((x.shape[0], 1))
+    return np.hstack((ones_column, x))
 
 
 def sigmoid(x):
     """
         Applies sigmoid function for a given input.
-
         Parameters
         ----------
         x : Input to the sigmoid function.
             For Logistic Regression purposes, apply dot product of data instance and weight vector
             before applying this function.
-
-        Returns
-        -------
-        Returns a value between [0,1].
     """
     return 1 / (1 + np.exp(-x))
 
 
-def train(X_train, y_train, weights_init, iteration):
+def prepare_test_train_xy(x, y, pca_var, k_str, test_size):
     """
-        This function trains the logistic regression model for binary classification.
-        Uses Newton-Raphson Method to update the weights.
+        1) Applies PCA to the design matrix.
+        2) Replace class string names with integers in the order of K_str.
+        3) Adds columns of 1s to the design matrix after PCA.
+        4) Splits X and y into train and test datasets based on the test size.
 
         Parameters
         ----------
-        X_train : Design matrix of the training dataset.
-        y_train : Response vector of the training dataset.
-        weights_init : Starting weight vector for Newton-Raphson Method
-        iteration : Maximum number of Newton-Raphson Method iterations if no convergence.
+        x : Initial unmodified design matrix.
+        y : Initial unmodified response matrix. classes are writen as string class names.
+        pca_var : Variance parameter for PCA
+        test_size : Ratio of the dataset to allocate to test.
+        k_str : list of class names (string).
 
         Returns
         -------
-        w_new : The final updated wieght vector of the Logistic Model.
+        x_train, x_test, y_train, y_test : Prepared test and train datasets.
     """
-    w_new = weights_init
+    # Enter PCA
+    principal_component_analysis = pca(x, pca_var)
+    principal_component_analysis.analyze()
+    x = principal_component_analysis.get_new_dataset()
+
+    # Replace class string names with integers in the order of K_str
+    string_to_index = {string: i for i, string in enumerate(k_str)}
+    y = np.array([string_to_index[string] for string in y])
+
+    # Add column 1 to the design matrix
+    x = add_column_ones_design_matrix(x)
+
+    # Split Data into Training and Test
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_size, random_state=0)
+    return x_train, x_test, y_train, y_test
+
+
+def binary_logistic_train(x_train, y_train, iteration):
+    """
+        This function trains the logistic regression model for binary classification.
+        Uses Newton Method to update the weights.
+
+        Parameters
+        ----------
+        x_train : Design matrix of the training dataset.
+        y_train : Response vector of the training dataset.
+        iteration : Maximum number of Newton Method iterations if no convergence.
+
+        Returns
+        -------
+        w_new : The final updated weight vector of the Logistic Model.
+    """
+    # Initialize model weights
+    weights_init = np.zeros(x_train.shape[1])
+    w_old = np.zeros(x_train.shape[1])
+    w_new = np.copy(weights_init)
     iter_num = 0
-    # print(weights_init)
 
     for i in range(iteration):
         w_old = np.copy(w_new)
-        PI = sigmoid(np.dot(X_train, w_old))
-        W = np.eye(len(PI))
-        np.fill_diagonal(W, PI * (1 - PI))
-        # Newton-Raphson Method for updating weights
-        XTWX = np.dot(np.dot(X_train.T, W), X_train)
+        pi_arr = sigmoid(np.dot(x_train, w_old))
+        w = np.eye(len(pi_arr))
+        np.fill_diagonal(w, pi_arr * (1 - pi_arr))
+        # Newton Method for updating weights
+        xtwx = np.dot(np.dot(x_train.T, w), x_train)
 
         # Check if XTWX is singular
-        if np.linalg.cond(XTWX) < 1 / sys.float_info.epsilon:
+        if np.linalg.cond(xtwx) < 1 / sys.float_info.epsilon:
             # If XTWX is singular, add regularization to stabilize inversion
-            w_new = w_old + np.dot(np.dot(np.linalg.inv(XTWX + 0.01 * np.eye(len(XTWX))), X_train.T), y_train - PI)
+            w_new = w_old + np.dot(np.dot(np.linalg.inv(xtwx + 0.01 * np.eye(len(xtwx))), x_train.T), y_train - pi_arr)
         else:
             # Otherwise, proceed without regularization
-            w_new = w_old + np.dot(np.dot(np.linalg.inv(XTWX), X_train.T), y_train - PI)
+            w_new = w_old + np.dot(np.dot(np.linalg.inv(xtwx), x_train.T), y_train - pi_arr)
 
         iter_num += 1
-        # e = abs(w_new - w_old)
-        # check = np.array_equal(w_new, w_old)
-        # print(w_new)
 
         if all(abs(w_new - w_old) < 10 ** (-8)):
             print('Weights Converged')
@@ -90,49 +116,71 @@ def train(X_train, y_train, weights_init, iteration):
     return w_new
 
 
-def test(X_test, y_test, weights):
+def one_vs_all_classifier(x_train, y_train, k_str, iteration):
     """
-        This function tests the logistic regression model for binary classification.
-
-        Parameters
-        ----------
-        X_test : Design matrix of the test dataset.
-        y_test : Response vector of the test dataset.
-        weights : Updated weight vector obtained from training.
-
-        Returns
-        -------
-        y_probability : Response vector in terms of probabilities.
-        y_prediction : Prediction vector for each test data.
-                       y_probability is adjusted based on the treshold.
+    Applies all binary logistic regression classifiers and obtains each models weights
+    Returns all model weights as an array.
     """
-    z = np.dot(X_test, weights)
+    # Initialize array
+    all_classifier_weights = np.zeros((len(k_str), x_train.shape[1]))
+
+    for i in range(len(k_str)):
+        # Convert elements in y to 0 if they are not equal to i
+        y_train_binary = np.where(y_train != i, 0, 1)
+
+        # Train and obtain the model weights for ith classifier
+        classifier_i_weights = binary_logistic_train(x_train, y_train_binary, iteration)
+
+        # Save all model weights for later use.
+        all_classifier_weights[i] = classifier_i_weights
+    return all_classifier_weights
+
+
+def test(x, y_true, all_classifier_weights, threshold):
+    """
+    x : Design Matrix to test
+    y_true : Response matrix of the data x to be tested
+    all_classifier_weights : All model weights from training
+    all_classifier_weights : Weights of all trained classifiers
+    """
+    z = np.dot(x, all_classifier_weights.T)
     y_probability = sigmoid(z)
-    y_prediction = y_probability.copy()
-    threshold = 0.5
-    y_prediction[y_prediction < threshold] = 0
-    y_prediction[y_prediction >= threshold] = 1
-    accuracy(y_prediction, y_test)
+    # At this point the y_probability array is set
+    # Check Accuracy by comparing y_prediction and y_true for each binary classifiers and the total 1 vs all classifier
+    # If testing a single data point, also plot the probabilities on a graph
+
+    # First test accuracies for binary classifiers
+    for i in range(all_classifier_weights.shape[0]):
+        print("CLASSIFIER", i)
+        # assign ith classifier probability results to classes based on threshold.
+        y_prediction_classifier_i = np.copy(y_probability[:, i])
+        y_prediction_classifier_i[y_prediction_classifier_i < threshold] = 0
+        y_prediction_classifier_i[y_prediction_classifier_i >= threshold] = 1
+        # Convert elements in y_true to 0 if they are not equal to i
+        y_true_binary = np.where(y_true != i, 0, 1)
+        print("Classifier {} Accuracy: {}%\n".format(i+1, accuracy(y_prediction_classifier_i, y_true_binary)))
+
+    # Now find accuracy of one vs all classifier.
+    # First, using y_probability array find the classes of highest probability
+    y_prediction = np.argmax(y_probability, axis=1)
+    print("One Vs All Logistic Regression Classifier Accuracy: {}%\n".format(accuracy(y_prediction, y_true)))
     return y_probability, y_prediction
 
 
-def accuracy(y_prediction, y_test):
+def accuracy(y_prediction, y_true):
     """
         Calculates the performance of the model by comparing real responses and the predicted responses
         and finds the Accuracy Rate.
-
         Parameters
         ----------
         y_prediction : Vector of predicted labels of test dataset.
-        y_test :  Vector of real labels of test dataset.
-
+        y_true :  Vector of real labels of test dataset.
         Returns
         -------
-        accuracy_rate : Rate of correctly performed predictions for the test dataset.
+        accuracy_rate : Rate of correctly performed predictions.
     """
     # Percentage of elements that are equal
-    accuracy_rate = (np.sum(y_prediction == y_test) / len(y_test)) * 100
-    print('Accuracy of the model using test data: ', accuracy_rate)
+    accuracy_rate = (np.sum(y_prediction == y_true) / len(y_true)) * 100
     return accuracy_rate
 
 
@@ -160,29 +208,38 @@ def confusion_matrix(y_true, y_prediction):
     return cm
 
 
-def draw_confusion_matrix(y_test, y_prediction):
+def draw_confusion_matrix(y_true, y_prediction, label):
     """
         Draws the confusion matrix
-
         Parameters
         ----------
         y_prediction : Vector of predicted labels of test dataset.
-        y_test :  Vector of real labels of test dataset.
-
+        y_true :  Vector of real labels of test dataset.
+        label : Are we drawing confusion matrix for test or training accuracy.
         Returns
         -------
         cm : Confusion matrix as a numpy array.
     """
     # Calculate confusion matrix
-    cm = confusion_matrix(y_test, y_prediction)
+    cm = confusion_matrix(y_true, y_prediction)
 
     # Plot confusion matrix
     plt.figure(figsize=(8, 6))
     sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', cbar=False)
     plt.xlabel('Predicted labels')
     plt.ylabel('True labels')
-    plt.title('Confusion Matrix')
-    plt.show()
-    return cm
+    if label == 'test':
+        plt.title('Confusion Matrix for Test Dataset Accuracy')
+        plt.show()
+        return cm
+    elif label == 'train':
+        plt.title('Confusion Matrix for Training Dataset Accuracy')
+        plt.show()
+        return cm
+    else:
+        print('Invalid Confusion Matrix Label')
+        return cm
+
+
 
 
