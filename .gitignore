@@ -4,3 +4,4 @@
 *.pyc
 
 data/mnist/
+/non_project_files/
